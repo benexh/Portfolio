@@ -1,0 +1,73 @@
+:root {
+    --text-white-mode: #000000;
+    --text-dark-mode: #EFEFEF;
+    --background-white-mode: #F7F7F7;
+    --background-dark-mode: #1A1A1A;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: var(--background-white-mode);
+}
+
+@font-face {
+    font-family: Antique;
+    src: url(fonts/Antique-Stories.otf) format('opentype');
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: var(--background-dark-mode);
+    }
+}
+
+.hero {
+    display: flex;
+    height: 100vh;
+}
+
+@media (prefers-color-scheme: dark) {
+    .hero {
+        color: var(--text-dark-mode);
+    }
+}
+
+.theme-switcher {
+    height: 1.5rem;
+    width: 1.5rem;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.name {
+    font-family: "smoosh-4";
+    font-size: 12rem;
+    font-weight: 500;
+}
+
+.status {
+    font-family: "Epilogue";
+    font-size: 1.5rem;
+    padding-top: 0.5em;
+}
+
+.menu {
+    position: absolute;
+    top: 93vh;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5em;
+    font-family: "Epilogue";
+}
