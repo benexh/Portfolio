@@ -3,12 +3,14 @@
     --text-dark-mode: #EFEFEF;
     --background-white-mode: #F7F7F7;
     --background-dark-mode: #1A1A1A;
+    --background-accent-dark-mode: #222222;
+    --background-accent-white-mode: #F1F1F1;
 }
 
 body {
     padding: 0;
     margin: 0;
-    background-color: var(--background-white-mode);
+    background-color: var(--background-white-mode); 
 }
 
 @font-face {
@@ -39,6 +41,7 @@ body {
     position: absolute;
     top: 5%;
     right: 5%;
+
 }
 
 .hero-text {
@@ -52,17 +55,35 @@ body {
     font-family: "smoosh-4";
     font-size: 12rem;
     font-weight: 500;
+    text-align: center;
+}
+
+@media (max-width: 1000px) and (min-resolution: 250dpi) and
+(orientation: portrait) {
+    .name {
+        text-align: center;
+    }
 }
 
 .status {
     font-family: "Epilogue";
     font-size: 1.5rem;
     padding-top: 0.5em;
+    text-align: center;
+}
+
+@media (max-width: 1000px) and (min-resolution: 250dpi) and
+(orientation: portrait) {
+    .status {
+        font-size: 1.05rem;
+        text-align: center;
+        line-height: 1.5em;
+    }
 }
 
 .menu {
     position: absolute;
-    top: 93vh;
+    top: 87vh;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -70,4 +91,45 @@ body {
     justify-content: center;
     gap: 1.5em;
     font-family: "Epilogue";
+    background-color: var(--background-accent-white-mode);
+    padding: 0.6rem;
+    border-radius: 2.8rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    .menu {
+        background-color: var(--background-accent-dark-mode);
+    }
+}
+
+.projekte {
+    padding: 1.2rem 1rem 1rem 1rem;
+    border: 0.1em solid var(--text-white-mode);
+    border-radius: 3.6rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    .projekte {
+        border: 0.1em solid var(--text-dark-mode);
+    }
+}
+
+.bio {
+    display: flex;
+    justify-content: center;
+    padding: 1.2rem 1rem 1rem 1rem;
+    width: 2.5rem;
+    /*border: 0.1em solid var(--text-dark-mode);*/
+    border-radius: 3.6rem;
+}
+
+
+.kontakt {
+    display: flex;
+    justify-content: center;
+    padding: 1.2rem 1rem 1rem 1rem;
+    width: 4rem;
+    /*border: 0.1em solid var(--text-dark-mode);*/
+    border-radius: 3.6rem;
+
 }
