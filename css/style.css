@@ -1,9 +1,9 @@
 :root {
-    --text-white-mode: #000000;
-    --text-dark-mode: #EFEFEF;
+    --text-white-mode: #101217;
+    --text-dark-mode: #F7F7F7;
     --background-white-mode: #F7F7F7;
-    --background-dark-mode: #1A1A1A;
-    --background-accent-dark-mode: #222222;
+    --background-dark-mode: #101217;
+    --background-accent-dark-mode: #14181F;
     --background-accent-white-mode: #F1F1F1;
 }
 
@@ -27,11 +27,13 @@ body {
 .hero {
     display: flex;
     height: 100vh;
+    background-image: url("/icons/lightmode/gradient-light-mode.svg");
 }
 
 @media (prefers-color-scheme: dark) {
     .hero {
         color: var(--text-dark-mode);
+        background-image: url("/icons/darkmode/gradient-dark-mode.svg");
     }
 }
 
@@ -91,6 +93,7 @@ body {
     justify-content: center;
     gap: 1.5em;
     font-family: "Epilogue";
+    font-size: 0.9em;
     background-color: var(--background-accent-white-mode);
     padding: 0.6rem;
     border-radius: 2.8rem;
@@ -132,4 +135,11 @@ body {
     /*border: 0.1em solid var(--text-dark-mode);*/
     border-radius: 3.6rem;
 
+}
+
+.footer {
+    position: relative;
+    height: 50vh;
+    background-color: var(--background-white-mode);
+    font-family: "Epilogue";
 }
