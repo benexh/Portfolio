@@ -41,13 +41,13 @@ body {
 .hero {
     display: flex;
     height: 100vh;
-    background-image: url("/icons/lightmode/gradient-light-mode.svg");
+    /*background-image: url("/icons/lightmode/gradient-light-mode.svg");*/
 }
 
 @media (prefers-color-scheme: dark) {
     .hero {
         color: var(--text-dark-mode);
-        background-image: url("/icons/darkmode/gradient-dark-mode.svg");
+        /*background-image: url("/icons/darkmode/gradient-dark-mode.svg");*/
     }
 }
 
