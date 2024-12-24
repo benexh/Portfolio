@@ -153,12 +153,10 @@ body {
 
  .horizontal-scroll {
     height: 100vh;
-    background-color: var(--background-white-mode);
- }
+  }
 
  .sticky-parent {
     height: 500vh;
-    background-color: var(--background-white-mode);
  }
 
  .sticky {
@@ -166,7 +164,6 @@ body {
     position: sticky;
     top: 0;
     height: 100vh;
-    border: 1px solid red;
  }
 
  .scroll-section {
@@ -190,9 +187,15 @@ body {
 
 
  .contact {
-    position: relative;
     height: 100vh;
     display: flex;
     align-items: center;
-    color: var(--text-dark-mode );
+    color: var(--text-white-mode );
+    font-family: "Epilogue";
  }
+
+ @media (prefers-color-scheme: dark) {
+    .contact {
+        color: var(--text-dark-mode);
+    }
+}
