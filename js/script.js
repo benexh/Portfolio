@@ -93,7 +93,6 @@ textReveals.forEach(text => {
             html += `<span>${string[i]}</span>`;
         }
     }
-    console.log(html)
     text.innerHTML = html;
     observer.observe(text.parentElement);
 })

@@ -57,8 +57,7 @@ a {
     z-index: 1000;
 }
 
-@media (max-width: 1000px) and (min-resolution: 250dpi) and
-(orientation: portrait) {
+@media (pointer: coarse) {
     .cursor {
         display: none;
     }
@@ -149,7 +148,7 @@ section {
 .text__reveal{
     line-height: 1;
     overflow: hidden;
-    font-size: clamp(2rem, 8cqi, 20rem);
+    font-size: clamp(8rem, 8cqi, 20rem);
     white-space: nowrap;
 }
 
@@ -161,11 +160,13 @@ section {
 
 .hero__title__header {
     font-size: clamp(2rem, 8cqi, 20rem);
+    text-align: center;
 }
 
 .hero__cta h4 {
     font-size: clamp(2rem, 1.4cqi);
     display: inline-block;
+    text-align: center;
 }
 
 .menu__container {
@@ -179,6 +180,15 @@ section {
     transform: translate(-50%, -50%);
 }
 
+.menu__container a {
+    display: inline-block;
+    transition: transform .5s ease-out;
+}
+
+.menu__container a:hover {
+    transform: translateX(15px);
+}
+
 /* About */
 
 #about {
@@ -190,6 +200,7 @@ section {
 
 .about__container  {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center; 
     width: 100%;
@@ -204,6 +215,9 @@ section {
     text-transform: uppercase;
     text-wrap: balance;
     font-size: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
 }
 
 /* Projects */
@@ -393,7 +407,7 @@ section {
 }
 
 .cta__text {
-    width: 100%;
+    width: 80%;
     position: relative;
     top: 20%;
     left: 5%;
@@ -410,12 +424,13 @@ section {
 
 .legal {
     display: flex;
+    justify-content: flex-end;
     gap: 16px;
     font-size: 1rem;
     width: 100%;
     position: relative;
-    top: 85%;
-    left: 75%;
+    margin-top: 33rem;
+    padding-right: 2rem;
 }
 
 @media (prefers-color-scheme: dark) {
