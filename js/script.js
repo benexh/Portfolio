@@ -1,7 +1,8 @@
-import { createProjects } from "./projects.js";
+import { lerp } from "./utils.js";
+import { createProjects } from "./projects.js"
 
-createProjects();
-
+// Cursor
+ 
 const cursor = document.querySelector('.cursor');
 
 window.addEventListener('mousemove', (e) => {
@@ -14,32 +15,85 @@ window.addEventListener('mousemove', (e) => {
 
 });
 
-/*const stickySections =  [...document.querySelectorAll('.sticky')];
-let images = [
-    './icons/imgs/Cover1.png',
-    './icons/imgs/Cover2.png',    
-    './icons/imgs/Cover3.png',    
-    './icons/imgs/Cover1.png'    
-]
- 
-images.forEach(img => {
-    stickySections.forEach(section => {
-        let image = document.createElement('img');
-        image.src =  img;
-        section.querySelector('.scroll-section').appendChild(image); 
-    }); 
-});
+// Projects
 
-window.addEventListener('scroll', (e) => {
-    for (let i = 0; i < stickySections.length; i++) {
-        transform(stickySections[i])
+const projectsSticky = document.querySelector('.projects__sticky');
+const projectSlider = document.querySelector('.projects__slider');
+const main = document.querySelector('main')
+
+createProjects(); 
+
+let projectTargetX = 0; 
+let projectCurrentX = 0;
+
+let percentages = {
+    small: 700,
+    medium: 300,
+    large: 100
+}
+
+let limit = window.innerWidth <= 600 ? percentages.small : 
+            window.innerWidth <= 1100 ? percentages.medium : 
+            percentages.large
+
+function setLimit(){
+    limit = window.innerWidth <= 600 ? percentages.small : 
+            window.innerWidth <= 1100 ? percentages.medium : 
+            percentages.large
+}
+
+window.addEventListener('resize', setLimit);
+
+function animateProjects(){
+    let offsetTop = projectsSticky.parentElement.offsetTop;
+    let percentage = ((main.scrollTop - offsetTop) / window.innerHeight) * 100;
+    percentage = percentage < 0 ? 0 : percentage > limit ? limit : percentage;
+    projectTargetX = percentage;
+    projectCurrentX = lerp(projectCurrentX, projectTargetX, .1);
+    projectSlider.style.transform = `translate3d(${-(projectCurrentX)}vw, 0, 0)`;
+}
+
+function animate(){
+    animateProjects();
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+//Text Reveal 
+
+const textReveals = [...document.querySelectorAll('.text__reveal')];
+
+let callback = (entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            [...entry.target.querySelectorAll('span')].forEach((span, idx) => {
+                setTimeout(() => {
+                     span.style.transform = `translateY(0)`;
+                }, (idx + 1) * 50)
+            })
+        }
+    })
+})
+
+let options = {
+    rootMargin: '0px',
+    threshold: '1.0'
+}
+
+let observer = new IntersectionObserver(callback, options);
+
+textReveals.forEach(text => {
+    let string = text.innerText;
+    let html = '';
+    for(let i = 0; i < string.length; i++){
+        if (string[i] === ' ') {
+            html += `<span style="width: 0.25em; display: inline-block;">&nbsp;</span>`;
+        } else {
+            html += `<span>${string[i]}</span>`;
+        }
     }
-});
-
-function transform(section){
-    const offsetTop = section.parentElement.offsetTop;
-    const scrollSection = document.querySelector('.scroll-section');
-    let percentage = ((window.scrollY - offsetTop) / window.innerHeight) * 100; 
-    percentage = percentage < 0 ? 0 : percentage > 400 ? 400 : percentage; 
-    scrollSection.style.transform = `translate3d(${-(percentage)}vw, 0, 0  )`
-};*/
+    console.log(html)
+    text.innerHTML = html;
+    observer.observe(text.parentElement);
+})

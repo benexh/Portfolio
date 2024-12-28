@@ -1,54 +1,85 @@
 const projects = [
     {
-        title: 'Projekt 1',
-        date: '10/2023',
+        name: 'PROJECT 1',
+        date: '2023',
+        pos: 'start',
         image: './icons/imgs/Cover1.png'
     },
     {
-        title: 'Projekt 2',
-        date: '01/2024',
+        name: 'PROJECT 2',
+        date: '2023',
+        pos: 'end',
         image: './icons/imgs/Cover2.png'
     },
     {
-        title: 'Projekt 3',
-        date: '07/2024',
+        name: 'PROJECT 3',
+        date: '2024',
+        pos: 'start',
         image: './icons/imgs/Cover3.png'
     },
+    {
+        name: 'PROJECT 4',
+        date: '2023',
+        pos: 'end',
+        image: './icons/imgs/Cover1.png'
+    },
+    {
+        name: 'PROJECT 1',
+        date: '2023',
+        pos: 'start',
+        image: './icons/imgs/Cover1.png'
+    },
+    {
+        name: 'PROJECT 2',
+        date: '2023',
+        pos: 'end',
+        image: './icons/imgs/Cover2.png'
+    },
+    {
+        name: 'PROJECT 3',
+        date: '2024',
+        pos: 'start',
+        image: './icons/imgs/Cover3.png'
+    },
+    {
+        name: 'PROJECT 4',
+        date: '2023',
+        pos: 'end',
+        image: './icons/imgs/Cover1.png'
+    }, 
 ]
 
-const createProjects = () => {
-    projects.forEach(project => {
-        let projectSection = document.createElement('div');
-        projectSection.classList.add('project-section');
-
-        let projectDiv = document.createElement('div');
-        projectDiv.classList.add('project');
+const createProjects = () =>   {
+     projects.forEach(project => {
+        let panel = document.createElement('div');
+        panel.classList.add('project', `${project.pos}`);
 
         let imageContainer = document.createElement('div');
-        imageContainer.classList.add('project-image-container');
+        imageContainer.className = `image__container`;
 
         let image = document.createElement('img');
-        image.classList.add('.project-image');
-        image.src = project.image;
+        image.classList.add('project__image');
+        image.src =  project.image; 
 
         let projectDetails = document.createElement('div');
-        projectDetails.classList.add('project-details');
+        projectDetails.classList.add('project__detail'); 
 
         let projectTitle = document.createElement('p');
-        projectTitle = document.classList.add('project-title');
+        projectTitle.innerText = project.name;
 
         let projectDate = document.createElement('p');
-        projectDate.innerText = project.date;
+        projectDate.innerText = project.date; 
 
-        imageContainer.appendChild(image);
-        projectDetails.append(projectTitle, projectDate);
-        projectDiv.append(imageContainer, projectDetails);
-        projectSection.appendChild(projectDiv);
+        projectDetails.append(projectTitle, projectDate)
 
-        document.getElementById('projekte').appendChild(projectSection);
-    })
+        imageContainer.appendChild(image); 
+        panel.append(imageContainer, projectDetails);
+
+        document.querySelector('.projects__slider ').appendChild(panel); 
+         
+     })
 }
 
 export {
-    createProjects
+    createProjects 
 }
