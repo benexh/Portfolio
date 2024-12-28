@@ -25,11 +25,21 @@ html, body {
     height: 100%;
 }
 
+a {
+    color: var(--text-dark-mode);
+    text-decoration: none;
+}
+
 @media (prefers-color-scheme: dark) {
     html, body {
         background-color: var(--background-dark-mode);
         color: var(--text-dark-mode);
     }
+
+    a {
+        color: var(--text-white-mode);
+    }
+
 }
 
 .cursor {
@@ -101,6 +111,7 @@ section {
 
 .hero__title h1 {
     overflow: hidden;
+    text-align: center;
 }
 
 .text__reveal{
@@ -254,7 +265,7 @@ section {
 
 @media only screen and (max-width: 600px) {
     #projects {
-        height: 8 00%;
+        height: 800%;
     }
 
     .projects__sticky {
@@ -292,6 +303,10 @@ section {
     width: 100%;
     height: 70%;
     background-color: var(--background-dark-mode);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -300,4 +315,70 @@ section {
     }
 }
 
+.links__container {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 5%;
+    gap: 1.4rem;
+}
+
+.links__container a {
+    font-size: 1.2rem;
+    transition: .3s;
+    display: inline-block;
+}
+
+.links__container a:hover {
+    transform: translateX(15px);
+}
+
+.divider__contact {
+    height: 80%;
+    opacity: .1;
+    width: 1px;
+    background-color: var(--background-white-mode);
+}
+
+@media (prefers-color-scheme: dark) {
+    .divider__contact {
+        background-color: var(--background-dark-mode);
+    }
+}
+
+.contact__cta__container {
+    height: 100%;
+    width: 60%;
+}
+
+.hover__underline__text {
+    position: relative;
+    display: inline-block;
+}
+
+.hover__underline__text::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--text-dark-mode);
+    transform-origin: bottom right;
+    transition: transform 0.5s ease-out;
+}
+
+@media (prefers-color-scheme: dark) {
+    .hover__underline__text::after {
+        background-color: var(--text-white-mode);
+    }
+}
+
+.hover__underline__text:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
 
