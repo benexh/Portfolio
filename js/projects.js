@@ -1,31 +1,34 @@
 const projects = [
     {
         id: 'project-1',
-        name: 'PROJECT 1',
-        date: '10/  2023',
+        name: 'BASICS INTERFACE',
+        date: '2023',
         pos: 'start',
         image: './icons/imgs/Cover1.png',
         type: 'INTERFACE',
+        projectDate: '10/23',
         additionalImage: './icons/imgs/Cover1.png',
         description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo maiores placeat voluptates perferendis quibusdam. Consequuntur quisquam, consequatur quae sunt alias suscipit totam adipisci vitae, nemo sapiente nesciunt voluptas aliquam assumenda?'
     },
     {
         id: 'project-2',
-        name: 'PROJECT 2',
+        name: 'HEADLINES & DEADLINES',
         date: '2023',
         pos: 'end',
         image: './icons/imgs/Cover2.png',
         type: 'GRAPHIC',
+        projectDate: '10/23',
         additionalImage: './icons/imgs/Cover2.png',
         description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo maiores placeat voluptates perferendis quibusdam. Consequuntur quisquam, consequatur quae sunt alias suscipit totam adipisci vitae, nemo sapiente nesciunt voluptas aliquam assumenda?'
     },
     {
         id: 'project-3',
-        name: 'PROJECT 3',
+        name: 'SCHRIFTGESTALTUNG',
         date: '2024',
         pos: 'start',
         image: './icons/imgs/Cover3.png',
         type: 'TYPE',
+        projectDate: '10/23',
         additionalImage: './icons/imgs/Cover3.png',
         description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo maiores placeat voluptates perferendis quibusdam. Consequuntur quisquam, consequatur quae sunt alias suscipit totam adipisci vitae, nemo sapiente nesciunt voluptas aliquam assumenda?'
     },
@@ -36,6 +39,7 @@ const projects = [
         pos: 'end',
         image: './icons/imgs/Cover1.png',
         type: 'INTERFACE',
+        projectDate: '10/23',
         additionalImage: './icons/imgs/Cover1.png',
         description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo maiores placeat voluptates perferendis quibusdam. Consequuntur quisquam, consequatur quae sunt alias suscipit totam adipisci vitae, nemo sapiente nesciunt voluptas aliquam assumenda?'
     },
@@ -46,6 +50,7 @@ const projects = [
         pos: 'start',
         image: './icons/imgs/Cover1.png',
         type: 'INTERFACE',
+        projectDate: '10/23',
         additionalImage: './icons/imgs/Cover1.png',
         description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo maiores placeat voluptates perferendis quibusdam. Consequuntur quisquam, consequatur quae sunt alias suscipit totam adipisci vitae, nemo sapiente nesciunt voluptas aliquam assumenda?'
     },
@@ -56,6 +61,7 @@ const projects = [
         pos: 'end',
         image: './icons/imgs/Cover2.png',
         type: 'GRAPHIC',
+        projectDate: '10/23',
         additionalImage: './icons/imgs/Cover2.png',
         description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo maiores placeat voluptates perferendis quibusdam. Consequuntur quisquam, consequatur quae sunt alias suscipit totam adipisci vitae, nemo sapiente nesciunt voluptas aliquam assumenda?'
     },
@@ -66,6 +72,7 @@ const projects = [
         pos: 'start',
         image: './icons/imgs/Cover3.png',
         type: 'TYPO',
+        projectDate: '10/23',
         additionalImage: './icons/imgs/Cover3.png',
         description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo maiores placeat voluptates perferendis quibusdam. Consequuntur quisquam, consequatur quae sunt alias suscipit totam adipisci vitae, nemo sapiente nesciunt voluptas aliquam assumenda?'
     },
@@ -76,6 +83,7 @@ const projects = [
         pos: 'end',
         image: './icons/imgs/Cover1.png',
         type: 'INTERFACE',
+        projectDate: '10/23',
         additionalImage: './icons/imgs/Cover1.png',
         description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo maiores placeat voluptates perferendis quibusdam. Consequuntur quisquam, consequatur quae sunt alias suscipit totam adipisci vitae, nemo sapiente nesciunt voluptas aliquam assumenda?'
     }, 
@@ -126,7 +134,7 @@ const populateProjectPage = () => {
     if (project) {
         document.getElementById('project__title').innerText = project.name;
         document.getElementById('project__type').innerText = project.type;
-        document.getElementById('project__date').innerText = project.date;
+        document.getElementById('project__date').innerText = project.projectDate;
 
         document.getElementById('project__description').innerText = project.description;
 

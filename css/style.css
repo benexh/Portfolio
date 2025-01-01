@@ -357,6 +357,34 @@ section {
     align-items: center;
 }
 
+@media (max-width: 768px) {
+    .contact__container {
+        justify-content: space-between;
+    }
+
+    .top__white__space {
+        height: 40%;
+    }
+
+    .bottom__container {
+        flex-direction: column;
+        height: 70%;
+    }
+
+    .contact__cta__container {
+        order: 1;
+        width: 80%;
+    }
+
+    .links__container {
+        order: 2;
+    }
+
+    .divider__contact {
+        display: none;
+    }
+}
+
 @media (prefers-color-scheme: dark) {
     .bottom__container {
         background-color: var(--background-white-mode);
@@ -521,6 +549,10 @@ section {
 
 .header__details__container h4 {
     opacity: .7;
+}
+
+.project__description__container p {
+    /*text-wrap: balance;*/
 }
 
 @media (max-width: 768px) {
