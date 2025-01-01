@@ -1,3 +1,7 @@
+import { populateProjectPage } from "./projects.js";
+
+populateProjectPage();
+
 const cursor = document.querySelector('.cursor');
 
 window.addEventListener('mousemove', (e) => {
@@ -9,3 +13,7 @@ window.addEventListener('mousemove', (e) => {
     cursor.style.top = `${y}px`;
 
 });
+
+document.querySelector('.close__cta').addEventListener('click', () => {
+    window.history.back();
+})

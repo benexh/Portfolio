@@ -1,5 +1,5 @@
 import { lerp } from "./utils.js";
-import { createProjects } from "./projects.js"
+import { createProjects, populateProjectPage } from "./projects.js"
 
 // Cursor
  
@@ -22,6 +22,7 @@ const projectSlider = document.querySelector('.projects__slider');
 const main = document.querySelector('main')
 
 createProjects(); 
+populateProjectPage();
 
 let projectTargetX = 0; 
 let projectCurrentX = 0;
