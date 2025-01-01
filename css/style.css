@@ -25,6 +25,7 @@ html, body {
     height: 100%;
     scroll-behavior: smooth;
     overflow-y: hidden;
+    cursor: none;
 }
 
 a {
@@ -447,4 +448,57 @@ section {
     .legal h6 {
         color: var(--text-white-mode);
     }
+}
+
+/* Project Page */
+
+.close__cta__container {
+    position: fixed;
+    top: 5%;
+    left: 5%;
+    transform: translate(-5%, -5%);
+    mix-blend-mode: difference;
+}
+
+.content {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+.project__image__container {
+    background-color: hotpink;
+    width: 60%;
+}
+
+.text__container {
+    width: 40%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 2rem;
+}
+
+.header__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.header__container h1 {
+    font-style: italic;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.header__details__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+}
+
+.header__details__container h4 {
+    opacity: .7;
 }
