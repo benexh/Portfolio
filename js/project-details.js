@@ -14,6 +14,7 @@ window.addEventListener('mousemove', (e) => {
 
 });
 
+
 document.querySelector('.close__cta').addEventListener('click', () => {
     window.history.back();
 })

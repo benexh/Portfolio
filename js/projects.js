@@ -4,10 +4,11 @@ const projects = [
         name: 'BASICS INTERFACE',
         date: '2023',
         pos: 'start',
-        image: './icons/imgs/Cover1.png',
+        coverImage: './icons/imgs/Cover1.png',
+        images: ['./icons/imgs/Cover1.png',
+                './icons/imgs/Cover1.png'],
         type: 'INTERFACE',
         projectDate: '10/23',
-        additionalImage: './icons/imgs/Cover1.png',
         description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo maiores placeat voluptates perferendis quibusdam. Consequuntur quisquam, consequatur quae sunt alias suscipit totam adipisci vitae, nemo sapiente nesciunt voluptas aliquam assumenda?'
     },
     {
@@ -15,7 +16,9 @@ const projects = [
         name: 'HEADLINES & DEADLINES',
         date: '2023',
         pos: 'end',
-        image: './icons/imgs/Cover2.png',
+        coverImage: './icons/imgs/Cover2.png',
+        images: ['./icons/imgs/Cover1.png',
+        './icons/imgs/Cover1.png'],        
         type: 'GRAPHIC',
         projectDate: '10/23',
         additionalImage: './icons/imgs/Cover2.png',
@@ -26,7 +29,9 @@ const projects = [
         name: 'SCHRIFTGESTALTUNG',
         date: '2024',
         pos: 'start',
-        image: './icons/imgs/Cover3.png',
+        coverImage: './icons/imgs/Cover3.png',
+        images: ['./icons/imgs/Cover1.png',
+                './icons/imgs/Cover1.png'],
         type: 'TYPE',
         projectDate: '10/23',
         additionalImage: './icons/imgs/Cover3.png',
@@ -37,7 +42,9 @@ const projects = [
         name: 'PROJECT 4',
         date: '2023',
         pos: 'end',
-        image: './icons/imgs/Cover1.png',
+        coverImage: './icons/imgs/Cover1.png',
+        images: ['./icons/imgs/Cover1.png',
+                './icons/imgs/Cover1.png'],
         type: 'INTERFACE',
         projectDate: '10/23',
         additionalImage: './icons/imgs/Cover1.png',
@@ -48,7 +55,9 @@ const projects = [
         name: 'PROJECT 1',
         date: '2023',
         pos: 'start',
-        image: './icons/imgs/Cover1.png',
+        coverImage: './icons/imgs/Cover1.png',
+        images: ['./icons/imgs/Cover1.png',
+                './icons/imgs/Cover1.png'],
         type: 'INTERFACE',
         projectDate: '10/23',
         additionalImage: './icons/imgs/Cover1.png',
@@ -59,7 +68,9 @@ const projects = [
         name: 'PROJECT 2',
         date: '2023',
         pos: 'end',
-        image: './icons/imgs/Cover2.png',
+        coverImage: './icons/imgs/Cover2.png',
+        images: ['./icons/imgs/Cover1.png',
+                './icons/imgs/Cover1.png'],
         type: 'GRAPHIC',
         projectDate: '10/23',
         additionalImage: './icons/imgs/Cover2.png',
@@ -70,7 +81,9 @@ const projects = [
         name: 'PROJECT 3',
         date: '2024',
         pos: 'start',
-        image: './icons/imgs/Cover3.png',
+        coverImage: './icons/imgs/Cover3.png',
+        images: ['./icons/imgs/Cover1.png',
+                './icons/imgs/Cover1.png'],
         type: 'TYPO',
         projectDate: '10/23',
         additionalImage: './icons/imgs/Cover3.png',
@@ -81,7 +94,9 @@ const projects = [
         name: 'PROJECT 4',
         date: '2023',
         pos: 'end',
-        image: './icons/imgs/Cover1.png',
+        coverImage: './icons/imgs/Cover1.png',
+        images: ['./icons/imgs/Cover1.png',
+                './icons/imgs/Cover1.png'],
         type: 'INTERFACE',
         projectDate: '10/23',
         additionalImage: './icons/imgs/Cover1.png',
@@ -102,7 +117,7 @@ const createProjects = () =>   {
 
         let image = document.createElement('img');
         image.classList.add('project__image');
-        image.src =  project.image; 
+        image.src =  project.coverImage; 
 
         let projectDetails = document.createElement('div');
         projectDetails.classList.add('project__detail'); 
@@ -124,6 +139,32 @@ const createProjects = () =>   {
          
      })
 }
+const setupScrollTrigger = () => {
+    const textSections = document.querySelectorAll('.text__section');
+    const images = document.querySelectorAll('.project__page__image');
+
+    const observerOptions = {
+        root: null,
+        threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                let index = parseInt(entry.target.dataset.index);
+                if (index >= images.length) {
+                    index = images.length - 1; // fallback to last image
+                }
+
+                images.forEach(img => img.classList.remove('active'));
+                const activeImg = document.querySelector(`.project__page__image[data-index="${index}"]`);
+                if (activeImg) activeImg.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    textSections.forEach(section => observer.observe(section));
+};
 
 const populateProjectPage = () => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -135,20 +176,44 @@ const populateProjectPage = () => {
         document.getElementById('project__title').innerText = project.name;
         document.getElementById('project__type').innerText = project.type;
         document.getElementById('project__date').innerText = project.projectDate;
-
         document.getElementById('project__description').innerText = project.description;
 
-        let projectPageImageContainer = document.querySelector('.project__image__container');
-        let projectPageImage = document.createElement('img');
-        projectPageImage.src = project.image;
-        projectPageImage.alt = project.name;
-        projectPageImage.className = 'project__page__image';
+        const imgContainer = document.querySelector('.project__image__container');
+        const textContainer = document.querySelector('.text__container');
 
-        projectPageImageContainer.appendChild(projectPageImage);
+        // Simulated multiple sections (you can split real content later)
+        const sectionContents = [
+            'Intro: ' + project.description,
+            'Design Process: ' + project.description,
+            'Final Thoughts: ' + project.description
+        ];
+
+        sectionContents.forEach((text, index) => {
+            // Text section
+            const section = document.createElement('section');
+            section.className = 'text__section';
+            section.dataset.index = index;
+            section.innerHTML = `<p>${text}</p>`;
+            textContainer.appendChild(section);
+            });
+            // Image
+            project.images.forEach((imgSrc, index) => {
+                const img = document.createElement('img');
+                img.className = 'project__page__image';
+                img.src = imgSrc;
+                img.dataset.index = index;
+                img.alt = `Image ${index + 1}`;
+                imgContainer.appendChild(img);
+            });
+            
+        
+
+        setupScrollTrigger(); // Call scroll logic after DOM is ready
     } else {
         console.error(`Project with ID ${id} could not be created`);
     }
 };
+
 
 export {
     createProjects,
