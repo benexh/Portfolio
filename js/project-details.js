@@ -1,4 +1,4 @@
-import { populateProjectPage } from "./projects.js";
+import { populateProjectPage} from "./projects.js";
 
 populateProjectPage();
 

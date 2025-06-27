@@ -65,7 +65,7 @@ const projects = [
     },
     {
         id: 'project-6',
-        name: 'PROJECT 2',
+        name: 'Interactive Information',
         date: '2023',
         pos: 'end',
         coverImage: './icons/imgs/Cover2.png',
@@ -142,6 +142,7 @@ const createProjects = () =>   {
 const setupScrollTrigger = () => {
     const textSections = document.querySelectorAll('.text__section');
     const images = document.querySelectorAll('.project__page__image');
+    
 
     const observerOptions = {
         root: null,
@@ -173,42 +174,33 @@ const populateProjectPage = () => {
     const project = projects.find(p => p.id === id);
 
     if (project) {
-        document.getElementById('project__title').innerText = project.name;
-        document.getElementById('project__type').innerText = project.type;
-        document.getElementById('project__date').innerText = project.projectDate;
-        document.getElementById('project__description').innerText = project.description;
+        const container = document.querySelector('.project__scroll__container');
+        project.images.forEach((imgSrc, index) => {
+        const row = document.createElement('div');
+        row.className = 'project__scroll__row';
 
-        const imgContainer = document.querySelector('.project__image__container');
-        const textContainer = document.querySelector('.text__container');
+        const titleElement = document.getElementById('project-title');
+        if (titleElement) {
+             titleElement.textContent = project.name;
+        }
 
-        // Simulated multiple sections (you can split real content later)
-        const sectionContents = [
-            'Intro: ' + project.description,
-            'Design Process: ' + project.description,
-            'Final Thoughts: ' + project.description
-        ];
 
-        sectionContents.forEach((text, index) => {
-            // Text section
-            const section = document.createElement('section');
-            section.className = 'text__section';
-            section.dataset.index = index;
-            section.innerHTML = `<p>${text}</p>`;
-            textContainer.appendChild(section);
-            });
-            // Image
-            project.images.forEach((imgSrc, index) => {
-                const img = document.createElement('img');
-                img.className = 'project__page__image';
-                img.src = imgSrc;
-                img.dataset.index = index;
-                img.alt = `Image ${index + 1}`;
-                imgContainer.appendChild(img);
-            });
-            
-        
+        const imageDiv = document.createElement('div');
+        imageDiv.className = 'project__scroll__image';
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.alt = `Project image ${index + 1}`;
+        imageDiv.appendChild(img);
 
-        setupScrollTrigger(); // Call scroll logic after DOM is ready
+        const textDiv = document.createElement('div');
+        textDiv.className = 'project__scroll__text';
+        textDiv.innerHTML = `<p>${project.description}</p>`; // Customize text per image if desired
+
+        row.append(imageDiv, textDiv);
+        container.appendChild(row);
+        });
+
+
     } else {
         console.error(`Project with ID ${id} could not be created`);
     }
